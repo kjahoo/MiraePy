@@ -1,12 +1,19 @@
 import csv
-nyse = []
+from pandas import Series, DataFrame
+import pandas as pd
 
-f = open('NYSE_20171204.txt','r')
-csvReader = csv.reader(f)
+nyse = pd.read_csv('NYSE_20171204.txt')
+nyse = nyse.drop(['<date>','<open>','<high>','<low>','<close>','<vol>'], axis=1)
+nyse['<market>'] = 'US'
+nyse = DataFrame(nyse, columns=['<market>', '<ticker>', '<name>'])
 
-for row in csvReader:
-    nyse.append(row)
+nasdaq = pd.read_csv('NASDAQ_20171204.txt')
+nasdaq = nasdaq.drop(['<date>','<open>','<high>','<low>','<close>','<vol>'], axis=1)
+nasdaq['<market>'] = 'US'
+nasdaq = DataFrame(nyse, columns=['<market>', '<ticker>', '<name>'])
 
-print(nyse)
+us = pd.concat([nyse, nasdaq])
 
-f.close()
+# print(us)
+
+
