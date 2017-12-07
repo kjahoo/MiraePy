@@ -6,7 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+import PyQt5
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import *
 import sys
 import csv
@@ -19,84 +20,84 @@ class Ui_MainWindow(object):
         MainWindow.setEnabled(True)
         MainWindow.resize(800, 600)
         MainWindow.setWindowOpacity(1.0)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = PyQt5.QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.addBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.addBtn.setGeometry(QtCore.QRect(355, 260, 91, 31))
+        self.addBtn = PyQt5.QtWidgets.QPushButton(self.centralwidget)
+        self.addBtn.setGeometry(PyQt5.QtCore.QRect(355, 260, 91, 31))
         self.addBtn.setObjectName("addBtn")
-        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(10, 0, 781, 51))
+        self.horizontalLayoutWidget_2 = PyQt5.QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget_2.setGeometry(PyQt5.QtCore.QRect(10, 0, 781, 51))
         self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout = PyQt5.QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
-        font = QtGui.QFont()
+        self.label = PyQt5.QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = PyQt5.QtGui.QFont()
         font.setFamily("돋움")
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
-        self.label.setTextFormat(QtCore.Qt.RichText)
+        self.label.setTextFormat(PyQt5.QtCore.Qt.RichText)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
-        self.stockEdit = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
+        self.stockEdit = PyQt5.QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
         self.stockEdit.setWhatsThis("")
         self.stockEdit.setText("")
         self.stockEdit.setObjectName("stockEdit")
         self.horizontalLayout.addWidget(self.stockEdit)
-        self.searchBtn = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.searchBtn = PyQt5.QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
         self.searchBtn.setObjectName("searchBtn")
         self.horizontalLayout.addWidget(self.searchBtn)
-        self.exeBtn = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.exeBtn = PyQt5.QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
         self.exeBtn.setObjectName("exeBtn")
         self.horizontalLayout.addWidget(self.exeBtn)
-        self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 50, 331, 511))
+        self.verticalLayoutWidget = PyQt5.QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget.setGeometry(PyQt5.QtCore.QRect(10, 50, 331, 511))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout = PyQt5.QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label_2 = PyQt5.QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
-        self.resultWidget = QtWidgets.QTableWidget(self.verticalLayoutWidget)
+        self.resultWidget = PyQt5.QtWidgets.QTableWidget(self.verticalLayoutWidget)
         self.resultWidget.setAcceptDrops(False)
         self.resultWidget.setObjectName("resultWidget")
         self.resultWidget.setColumnCount(3)
         self.resultWidget.setRowCount(0)
-        item = QtWidgets.QTableWidgetItem()
+        item = PyQt5.QtWidgets.QTableWidgetItem()
         self.resultWidget.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = PyQt5.QtWidgets.QTableWidgetItem()
         self.resultWidget.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = PyQt5.QtWidgets.QTableWidgetItem()
         self.resultWidget.setHorizontalHeaderItem(2, item)
         self.verticalLayout.addWidget(self.resultWidget)
-        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(460, 50, 331, 511))
+        self.verticalLayoutWidget_2 = PyQt5.QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_2.setGeometry(PyQt5.QtCore.QRect(460, 50, 331, 511))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2 = PyQt5.QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.label_3 = PyQt5.QtWidgets.QLabel(self.verticalLayoutWidget_2)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_2.addWidget(self.label_3)
-        self.resultWidget_2 = QtWidgets.QTableWidget(self.verticalLayoutWidget_2)
+        self.resultWidget_2 = PyQt5.QtWidgets.QTableWidget(self.verticalLayoutWidget_2)
         self.resultWidget_2.setObjectName("resultWidget_2")
         self.resultWidget_2.setColumnCount(3)
-        self.resultWidget_2.setRowCount(20)
-        item = QtWidgets.QTableWidgetItem()
-        self.resultWidget_2.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.resultWidget_2.setVerticalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.resultWidget_2.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.resultWidget_2.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
+        self.resultWidget_2.setRowCount(1)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.resultWidget_2.setVerticalHeaderItem(0, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.resultWidget_2.setVerticalHeaderItem(1, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.resultWidget_2.setVerticalHeaderItem(2, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # self.resultWidget_2.setVerticalHeaderItem(3, item)
+        item = PyQt5.QtWidgets.QTableWidgetItem()
         self.resultWidget_2.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = PyQt5.QtWidgets.QTableWidgetItem()
         self.resultWidget_2.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
+        item = PyQt5.QtWidgets.QTableWidgetItem()
         self.resultWidget_2.setHorizontalHeaderItem(2, item)
         self.verticalLayout_2.addWidget(self.resultWidget_2)
         self.addBtn.raise_()
@@ -105,20 +106,20 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget_2.raise_()
         self.resultWidget.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar = PyQt5.QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.exeBtn.clicked['bool'].connect(MainWindow.setDockNestingEnabled)
+        self.exeBtn.clicked['bool'].connect(self.exeButtonClicked)
         self.searchBtn.clicked.connect(self.resultWidgetItem)
         # self.stockEdit.textEdited['QString'].connect(self.resultWidgetItem)
         self.addBtn.clicked.connect(self.addBtnClicked)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.resultWidget.cellClicked.connect(self.resultWidgetClicked)
+        PyQt5.QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.resultWidget.cellClicked.connect(self.resultWidget_clicked)
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
+        _translate = PyQt5.QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "글로벌 주식 최신 뉴스 검색"))
         self.addBtn.setText(_translate("MainWindow", "관심종목 추가"))
         self.label.setText(_translate("MainWindow", "종목명 or 코드 입력"))
@@ -132,14 +133,14 @@ class Ui_MainWindow(object):
         item = self.resultWidget.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "종목명"))
         self.label_3.setText(_translate("MainWindow", "관심종목"))
-        item = self.resultWidget_2.verticalHeaderItem(0)
-        item.setText(_translate("MainWindow", "1"))
-        item = self.resultWidget_2.verticalHeaderItem(1)
-        item.setText(_translate("MainWindow", "2"))
-        item = self.resultWidget_2.verticalHeaderItem(2)
-        item.setText(_translate("MainWindow", "3"))
-        item = self.resultWidget_2.verticalHeaderItem(3)
-        item.setText(_translate("MainWindow", "4"))
+        # item = self.resultWidget_2.verticalHeaderItem(0)
+        # item.setText(_translate("MainWindow", "1"))
+        # item = self.resultWidget_2.verticalHeaderItem(1)
+        # item.setText(_translate("MainWindow", "2"))
+        # item = self.resultWidget_2.verticalHeaderItem(2)
+        # item.setText(_translate("MainWindow", "3"))
+        # item = self.resultWidget_2.verticalHeaderItem(3)
+        # item.setText(_translate("MainWindow", "4"))
         item = self.resultWidget_2.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "국가"))
         item = self.resultWidget_2.horizontalHeaderItem(1)
@@ -164,13 +165,78 @@ class Ui_MainWindow(object):
         del search_result
 
     def addBtnClicked(self):
-        cell = self.resultWidget.item()
-        print(cell)
+        aa = self.resultWidget.selectedIndexes()
+        cell = set((idx.row()) for idx in aa)
+        # print(list(cell)[0])
+        f = []
+        for i in range(3):
+            f.append(self.resultWidget.item(list(cell)[0], i).text())
+        # print(f)
+        self.resultWidget_2.insertRow(1)
+        for col in range(3):
+            self.resultWidget_2.setItem(1, col, QTableWidgetItem(f[col]))
+        self.resultWidget_2.resizeColumnsToContents()
+        self.resultWidget_2.resizeRowsToContents()
+        self.resultWidget_2.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
-    def resultWidgetClicked(self, row, col):
-        cell = self.self.resultWidget.Item(row, col)
+        return
 
+    def resultWidget_clicked(self):
+        return
 
+    def exeButtonClicked(self):
+        self.f_code = []
+        # print(self.resultWidget_2.rowCount())
+        # print(self.resultWidget_2.item(1, 1).text())
+        for i in range(self.resultWidget_2.rowCount()):
+            try:
+                self.f_code.append((self.resultWidget_2.item(i, 1).text())+':'+self.resultWidget_2.item(i, 0).text())
+            except AttributeError:
+                pass
+        # print(self.f_code)
+        # print(bloomberg_news(self.f_code[0]))
+        self.f_stock = []
+        for i in self.f_code:
+            try:
+                self.f_stock.append(bloomberg_news(i))
+            except IndexError:
+                pass
+        # print(self.f_stock)
+        self.window = PyQt5.QtWidgets
+        self.ui = ShowWindow()
+        self.ui.setupUi(self.window)
+        # MainWindow.hide()
+        self.window.show()
+        # self.dlg = ShowWindow(self)
+        # self.dlg.show()
+        return
+
+class ShowWindow(object):
+    def __init__(self):
+        super(ShowWindow, self).__init__()
+        self.setupUi()
+
+    def setupUi(self):
+        self.setGeometry(800, 200, 800, 300)
+        self.setWindowsTitle("Global News")
+        self.tableWidget = QTableWidget(self)
+        self.tableWidget.resize(800, 290)
+        self.tableWidget.setRowCount(len(Ui_MainWindow.f_stock))
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        self.setTableWidgetData()
+
+    def setTableWidgetData(self):
+        column_headers = ['종목코드', '종목명', '뉴스', '시간']
+        self.tableWidget.setHorizontalHeaderLabels(column_headers)
+        print(Ui_MainWindow.f_stock)
+        for row in range(len(Ui_MainWindow.f_stock)):
+            for col in range(4):
+                self.tableWidget.setItem(row, col, QTableWidgetItem(Ui_MainWindow.f_stock[row][col]))
+
+        self.tableWidget.resizeColumnsToContents()
+        self.tableWidget.resizeRowsToContents()
 
 def stock_search(code):
     nyse = pd.read_csv('NYSE_20171204.txt')
@@ -191,12 +257,33 @@ def stock_search(code):
     return result
 
 
+def bloomberg_news(code):
+
+    import requests
+    from bs4 import BeautifulSoup
+
+    url = "https://www.bloomberg.com/quote/" + code
+    response = requests.get(url).text
+    #soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(response, "html5lib")
+    stock_name = soup.select(
+        "section.company__c1979f17 > h1")
+    news_article = soup.select("div.headline__eb73356e")
+    news_time = soup.select("div.updatedAt__3fe411c9")
+    link_news = soup.select('article:nth-of-type(1) > a')
+    url_news = link_news[0].get('href')
+    # print(stock_name)
+
+    return [code, stock_name[0].text, news_article[0].text, news_time[0].text, url_news]
+
+
 if __name__ == "__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
+    app = PyQt5.QtWidgets.QApplication(sys.argv)
+    MainWindow = PyQt5.QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
-    sys.exit(app.exec_())
+    app.exec_()
+    # sys.exit(app.exec_())
 

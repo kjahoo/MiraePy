@@ -1,28 +1,29 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QTableWidgetItem
-from pandas import Series, DataFrame
-import pandas as pd
-import requests
+import sys
+from PyQt5.QtWidgets import *
 
+class MyWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUI()
 
-def __init__(self, parent=None):
-    QtGui.QWidget.__init__(self, parent)
-    self.ntableView = QtGui.QTableView()
-    self.nlayout = QtGui.QVBoxLayout()
-    self.nmodel = QtGui.QStandardItemModel()
-    self.ntableView.setModel(self.nmodel)
-    self.nlayout.addWidget(self.ntableView)
-    self.setLayout(self.nlayout)
-    self.func_mappingSignal()
+    def setupUI(self):
+        self.setGeometry(800, 200, 300, 300)
 
+        self.tableWidget = QTableWidget(self)
+        self.tableWidget.resize(290, 290)
+        self.tableWidget.setRowCount(2)
+        self.tableWidget.setColumnCount(2)
+        self.setTableWidgetData()
 
-def func_mappingSignal(self):
-    self.ntableView.clicked.connect(self.func_test)
+    def setTableWidgetData(self):
+        self.tableWidget.setItem(0, 0, QTableWidgetItem("(0,0)"))
+        self.tableWidget.setItem(0, 1, QTableWidgetItem("(0,1)"))
+        self.tableWidget.setItem(1, 0, QTableWidgetItem("(1,0)"))
+        self.tableWidget.setItem(1, 1, QTableWidgetItem("(1,1)"))
+        print(self.tableWidget(0,0))
 
-
-def func_test(self, item):
-    # http://www.python-forum.org/viewtopic.php?f=11&t=16817
-    cellContent = item.data()
-    print(cellContent)  # test
-    sf = "You clicked on {}".format(cellContent)
-    print(sf)
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    mywindow = MyWindow()
+    mywindow.show()
+    app.exec_()
