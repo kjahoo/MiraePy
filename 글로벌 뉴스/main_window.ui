@@ -20,81 +20,244 @@
    <double>1.000000000000000</double>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="StockEdit">
+   <widget class="QPushButton" name="addBtn">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>10</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="whatsThis">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="searchBtn">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>10</y>
-      <width>71</width>
+      <x>355</x>
+      <y>260</y>
+      <width>91</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>검색</string>
+     <string>관심종목 추가</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
-      <width>121</width>
-      <height>31</height>
+      <y>0</y>
+      <width>781</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>돋움</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>종목명 or 코드 입력</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::RichText</enum>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>돋움</family>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>종목명 or 코드 입력</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="stockEdit">
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="searchBtn">
+       <property name="text">
+        <string>검색</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exeBtn">
+       <property name="text">
+        <string>관심종목 뉴스보기</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QColumnView" name="columnView">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>60</y>
-      <width>381</width>
-      <height>491</height>
+      <y>50</y>
+      <width>331</width>
+      <height>511</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>검색결과</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="resultWidget">
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>국가</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>종목코드</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>종목명</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
-    </rect>
-   </property>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>50</y>
+      <width>331</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>관심종목</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="resultWidget_2">
+       <row>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>국가</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>종목코드</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>종목명</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>addBtn</zorder>
+   <zorder>horizontalLayoutWidget_2</zorder>
+   <zorder>verticalLayoutWidget</zorder>
+   <zorder>verticalLayoutWidget_2</zorder>
+   <zorder>resultWidget</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>exeBtn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setDockNestingEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>745</x>
+     <y>26</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>861</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>resultWidget</receiver>
+   <slot>resizeRowsToContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>621</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>231</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stockEdit</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>resultWidget</receiver>
+   <slot>resizeRowsToContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>26</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>172</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>resultWidget_2</receiver>
+   <slot>doItemsLayout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>419</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>615</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
