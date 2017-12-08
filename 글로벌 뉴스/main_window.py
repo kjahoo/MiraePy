@@ -14,6 +14,51 @@ import csv
 from pandas import Series, DataFrame
 import pandas as pd
 
+f_code = []
+f_stock = []
+
+class MyDialog(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.setupUi()
+
+    def setupUi(self):
+        self.setGeometry(500, 100, 800, 300)
+        self.setWindowTitle("해외주식 실시간 뉴스 보기 v0.1 - 결과")
+        self.tableWidget = QTableWidget(self)
+        self.tableWidget.resize(800, 290)
+        self.tableWidget.setRowCount(len(f_stock))
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        self.setTableWidgetData()
+        self.tableWidget.cellClicked.connect(self.tableWidget_clicked)
+
+    def setTableWidgetData(self):
+        column_headers = ['종목코드', '종목명', '뉴스', '시간']
+        self.tableWidget.setHorizontalHeaderLabels(column_headers)
+
+        print(f_stock)
+        for row in range(len(f_stock)):
+            for col in range(4):
+                self.tableWidget.setItem(row, col, QTableWidgetItem(f_stock[row][col]))
+
+        self.tableWidget.resizeColumnsToContents()
+        self.tableWidget.resizeRowsToContents()
+
+    def tableWidget_clicked(self):
+        import os
+        aa = self.tableWidget.selectedIndexes()
+        cell = set((idx.row()) for idx in aa)
+        news_row = list(cell)
+        print(f_stock[news_row[0]][4])
+        # os.system(str(f_stock[news_row[0]][4]))
+        import webbrowser
+        url = f_stock[news_row[0]][4]
+        webbrowser.open(url)
+        webbrowser.open('https://translate.google.com/translate?sl=en&tl=ko&js=y&prev=_t&hl=ko&ie=UTF-8&u='+url)
+
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -48,6 +93,12 @@ class Ui_MainWindow(object):
         self.searchBtn = PyQt5.QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
         self.searchBtn.setObjectName("searchBtn")
         self.horizontalLayout.addWidget(self.searchBtn)
+        self.saveBtn = PyQt5.QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.saveBtn.setObjectName("saveBtn")
+        self.horizontalLayout.addWidget(self.saveBtn)
+        self.loadBtn = PyQt5.QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.loadBtn.setObjectName("loadBtn")
+        self.horizontalLayout.addWidget(self.loadBtn)
         self.exeBtn = PyQt5.QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
         self.exeBtn.setObjectName("exeBtn")
         self.horizontalLayout.addWidget(self.exeBtn)
@@ -120,10 +171,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = PyQt5.QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "글로벌 주식 최신 뉴스 검색"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "해외주식 실시간 뉴스 보기 v0.1"))
         self.addBtn.setText(_translate("MainWindow", "관심종목 추가"))
         self.label.setText(_translate("MainWindow", "종목명 or 코드 입력"))
         self.searchBtn.setText(_translate("MainWindow", "검색"))
+        self.saveBtn.setText(_translate("MainWindow", "관심종목 저장"))
+        self.loadBtn.setText(_translate("MainWindow", "관심종목 불러오기"))
         self.exeBtn.setText(_translate("MainWindow", "관심종목 뉴스보기"))
         self.label_2.setText(_translate("MainWindow", "검색결과"))
         item = self.resultWidget.horizontalHeaderItem(0)
@@ -185,58 +238,60 @@ class Ui_MainWindow(object):
         return
 
     def exeButtonClicked(self):
-        self.f_code = []
+        f_code = []
         # print(self.resultWidget_2.rowCount())
         # print(self.resultWidget_2.item(1, 1).text())
         for i in range(self.resultWidget_2.rowCount()):
             try:
-                self.f_code.append((self.resultWidget_2.item(i, 1).text())+':'+self.resultWidget_2.item(i, 0).text())
+                f_code.append((self.resultWidget_2.item(i, 1).text())+':'+self.resultWidget_2.item(i, 0).text())
             except AttributeError:
                 pass
-        # print(self.f_code)
-        # print(bloomberg_news(self.f_code[0]))
-        self.f_stock = []
-        for i in self.f_code:
+        # print(f_code)
+        # print(bloomberg_news(f_code[0]))
+
+        for i in f_code:
             try:
-                self.f_stock.append(bloomberg_news(i))
+                f_stock.append(bloomberg_news(i))
             except IndexError:
                 pass
-        # print(self.f_stock)
-        self.window = PyQt5.QtWidgets
-        self.ui = ShowWindow()
-        self.ui.setupUi(self.window)
+        dialog = MyDialog()
+        dialog.exec_()
+        # print(f_stock)
+        # self.window = PyQt5.QtWidgets
+        # self.ui = ShowWindow()
+        # self.ui.setupUi(self.window)
         # MainWindow.hide()
-        self.window.show()
+        # self.window.show()
         # self.dlg = ShowWindow(self)
         # self.dlg.show()
-        return
 
-class ShowWindow(object):
-    def __init__(self):
-        super(ShowWindow, self).__init__()
-        self.setupUi()
 
-    def setupUi(self):
-        self.setGeometry(800, 200, 800, 300)
-        self.setWindowsTitle("Global News")
-        self.tableWidget = QTableWidget(self)
-        self.tableWidget.resize(800, 290)
-        self.tableWidget.setRowCount(len(Ui_MainWindow.f_stock))
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
-
-        self.setTableWidgetData()
-
-    def setTableWidgetData(self):
-        column_headers = ['종목코드', '종목명', '뉴스', '시간']
-        self.tableWidget.setHorizontalHeaderLabels(column_headers)
-        print(Ui_MainWindow.f_stock)
-        for row in range(len(Ui_MainWindow.f_stock)):
-            for col in range(4):
-                self.tableWidget.setItem(row, col, QTableWidgetItem(Ui_MainWindow.f_stock[row][col]))
-
-        self.tableWidget.resizeColumnsToContents()
-        self.tableWidget.resizeRowsToContents()
+# class ShowWindow(object):
+#     def __init__(self):
+#         super(ShowWindow, self).__init__()
+#         self.setupUi()
+#
+#     def setupUi(self):
+#         self.setGeometry(800, 200, 800, 300)
+#         self.setWindowsTitle("Global News")
+#         self.tableWidget = QTableWidget(self)
+#         self.tableWidget.resize(800, 290)
+#         self.tableWidget.setRowCount(len(f_stock))
+#         self.tableWidget.setColumnCount(4)
+#         self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+#
+#         self.setTableWidgetData()
+#
+#     def setTableWidgetData(self):
+#         column_headers = ['종목코드', '종목명', '뉴스', '시간']
+#         self.tableWidget.setHorizontalHeaderLabels(column_headers)
+#         print(f_stock)
+#         for row in range(len(f_stock)):
+#             for col in range(4):
+#                 self.tableWidget.setItem(row, col, QTableWidgetItem(f_stock[row][col]))
+#
+#         self.tableWidget.resizeColumnsToContents()
+#         self.tableWidget.resizeRowsToContents()
 
 def stock_search(code):
     nyse = pd.read_csv('NYSE_20171204.txt')
